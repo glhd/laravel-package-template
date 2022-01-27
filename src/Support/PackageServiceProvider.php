@@ -2,10 +2,7 @@
 
 namespace Galahad\LaravelPackageTemplate\Support;
 
-use Galahad\Aire\Aire;
-use Galahad\Aire\Elements\Form;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class PackageServiceProvider extends ServiceProvider
