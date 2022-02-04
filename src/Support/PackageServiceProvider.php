@@ -1,46 +1,33 @@
 <?php
 
-namespace Galahad\LaravelPackageTemplate\Support;
+namespace Glhd\LaravelPackageTemplate\Support;
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class PackageServiceProvider extends ServiceProvider
 {
-	protected string $base_dir;
-	
-	public function __construct($app)
-	{
-		parent::__construct($app);
-		
-		$this->base_dir = dirname(__DIR__, 2);
-	}
-	
 	public function boot()
 	{
-		require_once __DIR__.'/helpers.php';
-		
-		$this->bootConfig();
-		$this->bootViews();
-		$this->bootBladeComponents();
+		// require_once __DIR__.'/helpers.php';
+		// $this->bootConfig();
+		// $this->bootViews();
+		// $this->bootBladeComponents();
 	}
 	
 	public function register()
 	{
-		$this->mergeConfigFrom("{$this->base_dir}/config.php", 'laravel-package-template');
+		$this->mergeConfigFrom($this->packageConfigFile(), 'laravel-package-template');
 	}
 	
 	protected function bootViews() : self
 	{
-		$views_directory = "{$this->base_dir}/resources/views";
+		$this->loadViewsFrom($this->packageViewsDirectory(), 'laravel-package-template');
 		
-		$this->loadViewsFrom($views_directory, 'laravel-package-template');
-		
-		if (method_exists($this->app, 'resourcePath')) {
-			$this->publishes([
-				$views_directory => $this->app->resourcePath('views/vendor/laravel-package-template'),
-			], 'laravel-package-template-views');
-		}
+		$this->publishes([
+			$this->packageViewsDirectory() => $this->app->resourcePath('views/vendor/laravel-package-template'),
+		], 'laravel-package-template-views');
 		
 		return $this;
 	}
@@ -56,12 +43,25 @@ class PackageServiceProvider extends ServiceProvider
 	
 	protected function bootConfig() : self
 	{
-		if (method_exists($this->app, 'configPath')) {
-			$this->publishes([
-				"{$this->base_dir}/config.php" => $this->app->configPath('laravel-package-template.php'),
-			], 'laravel-package-template-config');
-		}
+		$this->publishes([
+			$this->packageConfigFile() => $this->app->configPath('laravel-package-template.php'),
+		], 'laravel-package-template-config');
 		
 		return $this;
+	}
+	
+	protected function packageConfigFile(): string
+	{
+		return dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'config.php';
+	}
+	
+	protected function packageTranslationsDirectory(): string
+	{
+		return dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'translations';
+	}
+	
+	protected function packageViewsDirectory(): string
+	{
+		return dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views';
 	}
 }

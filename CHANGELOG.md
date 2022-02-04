@@ -17,4 +17,4 @@ format. This project adheres to [Semantic Versioning](https://semver.org/spec/v2
 - `Security` in case of vulnerabilities.
 
 [Unreleased]: https://github.com/glhd/laravel-package-template/compare/0.0.1...HEAD
-[0.0.1]: https://github.com/glhd/laravel-package-template/compare/0.0.0...0.0.1
+[0.0.1]: https://github.com/glhd/laravel-package-template/compare/0.0.1...0.0.1
