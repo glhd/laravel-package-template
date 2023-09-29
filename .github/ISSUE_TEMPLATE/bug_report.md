@@ -11,7 +11,7 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 **What version does this affect?**
- - Laravel Version: [e.g. 5.8.0]
+ - Laravel Version: [e.g. 10.0.0]
  - Package Version: [e.g. 1.5.0]
 
 **To Reproduce**

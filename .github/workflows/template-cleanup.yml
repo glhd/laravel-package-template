@@ -24,6 +24,7 @@ jobs:
           
           # Rename files
           mv .idea/laravel-package-template.iml .idea/$KEBAB.iml
+          mv config/config.php config/$KEBAB.php
 
           # Cleanup
           rm -f .github/workflows/template-cleanup.yml

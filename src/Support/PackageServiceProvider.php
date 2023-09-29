@@ -52,7 +52,7 @@ class PackageServiceProvider extends ServiceProvider
 	
 	protected function packageConfigFile(): string
 	{
-		return dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'config.php';
+		return dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'laravel-package-template.php';
 	}
 	
 	protected function packageTranslationsDirectory(): string

@@ -13,14 +13,14 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "illuminate/support": "^8|^9|^10|11.x-dev|dev-master",
+    "illuminate/support": "^9|^10|11.x-dev|dev-master",
     "ext-json": "*"
   },
   "require-dev": {
     "orchestra/testbench": "^6.24|^7.10|^8|9.x-dev|10.x-dev|dev-master",
-    "friendsofphp/php-cs-fixer": "^3.5",
-    "mockery/mockery": "^1.4",
-    "phpunit/phpunit": "^9.5"
+    "friendsofphp/php-cs-fixer": "^3.34",
+    "mockery/mockery": "^1.6",
+    "phpunit/phpunit": "^10.3"
   },
   "autoload": {
     "psr-4": {
