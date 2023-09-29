@@ -30,8 +30,8 @@ jobs:
           echo "Studly name: $STUDLY"
 
           # Replace placeholder names
-          find src -type f -exec sed -i "s/laravel-package-template/$KEBAB/g" {} +
-          find src -type f -exec sed -i "s/LaravelPackageTemplate/$STUDLY/g" {} +
+          find . -type f -not -name "template-cleanup.yml" -exec sed -i "s/laravel-package-template/$KEBAB/g" {} +
+          find . -type f -not -name "template-cleanup.yml" -exec sed -i "s/LaravelPackageTemplate/$STUDLY/g" {} +
           
           # Rename files
           mv .idea/laravel-package-template.iml .idea/$KEBAB.iml
