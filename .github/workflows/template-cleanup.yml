@@ -22,15 +22,17 @@ jobs:
           STUDLY="$(echo "$NAME" | awk '{split($0,a,"[_ -]"); for(i=1;i<=length(a);++i) printf "%s",(length(a[i]) > 0 ? toupper(substr(a[i],1,1)) tolower(substr(a[i],2)) : "")}')"
 
           # Replace placeholder names
-          find . -type f -not -name "template-cleanup.yml" -exec sed -i "s/laravel-package-template/$KEBAB/g" {} +
-          find . -type f -not -name "template-cleanup.yml" -exec sed -i "s/LaravelPackageTemplate/$STUDLY/g" {} +
+          find . -type d \( -path "./.git" -o -path "./.github" \) -prune -o -type f -exec sed -i "s/laravel-package-template/$KEBAB/g" {} +
+          find . -type d \( -path "./.git" -o -path "./.github" \) -prune -o -type f -exec sed -i "s/LaravelPackageTemplate/$STUDLY/g" {} +
           
           # Rename files
-          mv .idea/laravel-package-template.iml .idea/$KEBAB.iml
-          mv config/config.php config/$KEBAB.php
+          git mv .idea/laravel-package-template.iml .idea/$KEBAB.iml
+          git mv config/config.php config/$KEBAB.php
 
           # Cleanup
           rm -f .github/workflows/template-cleanup.yml
+      - name: Show changes
+        run: git status
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
