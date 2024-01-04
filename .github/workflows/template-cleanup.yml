@@ -28,6 +28,7 @@ jobs:
           # Rename files
           git mv .idea/laravel-package-template.iml .idea/$KEBAB.iml
           git mv config/config.php config/$KEBAB.php
+          git mv src/Support/LaravelPackageTemplateServiceProvider.php src/Support/${STUDLY}ServiceProvider.php
 
           # Cleanup
           rm -f .github/workflows/template-cleanup.yml

@@ -42,7 +42,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Glhd\\LaravelPackageTemplate\\Support\\PackageServiceProvider"
+        "Glhd\\LaravelPackageTemplate\\Support\\LaravelPackageTemplateServiceProvider"
       ]
     }
   },
