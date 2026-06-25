@@ -4,24 +4,25 @@ on:
   release:
     types: [ published ]
 
+permissions:
+  contents: write
+
 jobs:
-  update-publish:
+  changelog:
+    name: Update changelog
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
-          repository: ${{ github.event.repository.full_name }}
-          ref: 'main'
+          ref: main
 
-      - name: Update changelog
-        uses: thomaseizinger/keep-a-changelog-new-release@v3
+      - uses: rhysd/changelog-from-release/action@v3
         with:
-          version: ${{ github.event.release.tag_name }}
+          file: CHANGELOG.md
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          header: |
+            # Changelog
 
-      - name: Commit changelog back to repo
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: 'CHANGELOG.md'
-          message: ${{ github.event.release.tag_name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            All notable changes to this project are documented in this file. It is
+            generated automatically from [GitHub Releases](../../releases) whenever a
+            release is published.
