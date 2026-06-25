@@ -2,6 +2,7 @@ vendor/
 composer.phar
 composer.lock
 phpunit.xml
+.phpunit.cache
 .phpunit.result.cache
 .php_cs.cache
 .php-cs-fixer.cache
@@ -10,6 +11,7 @@ phpunit.xml
 .DS_Store
 .phpstorm.meta.php
 _ide_helper.php
+.clave.local.json
 
 node_modules
 mix-manifest.json
